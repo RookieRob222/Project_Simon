@@ -1,3 +1,3 @@
 #Routing functions will be placed in this folder.
-#Routing functions are used to easily map actions to the appropriate 
-#file without having to type out the url path each time
+#Router listens for the http requests and passes it to the appropriate 
+#controller functions.
