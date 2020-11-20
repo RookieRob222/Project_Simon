@@ -1,0 +1,23 @@
+{
+  "name": "project_simon",
+  "version": "1.0.0",
+  "description": "clone of Simon memory game",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RobertAMoore/Project_Simon.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RobertAMoore/Project_Simon/issues"
+  },
+  "homepage": "https://github.com/RobertAMoore/Project_Simon#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "path": "^0.12.7"
+  }
+}
