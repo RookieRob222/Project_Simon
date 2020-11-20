@@ -8,9 +8,7 @@ var app = express();
 var port = process.env.PORT || 8080;
 
 app.use('/', router);
-
-//Still having troubles seriving static files
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
 // start the server
 app.listen(port);

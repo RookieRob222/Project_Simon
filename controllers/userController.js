@@ -17,9 +17,9 @@ exports.user_create_post = function(req, res){
 	res.send('NOT IMPLEMENTED: user create POST');
 }
 
+//__dirname gives absolute path to userController.js so we need to move up a level to find views
 exports.user_login_get = function(req, res){
-	res.send('NOT IMPLEMENTED: user login GET');
-	//res.sendFile('/home/bob/Documents/School/Semester_XI/APW_JS_MW/HW/Project_Simon/views/login.html');
+	res.sendFile(path.join(__dirname, '../views/login.html'));
 }
 
 exports.user_login_post = function(req, res){
