@@ -10,8 +10,8 @@ var port = process.env.PORT || 8080;
 app.use('/', router);
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
-// start the server
+//Start the server 
+//Still need to add DB connection
 app.listen(port);
-console.log('Server started! At http://localhost:' + port);
 
-//Need to Initialize DB 
+console.log('Server started! At http://localhost:' + port);
