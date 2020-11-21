@@ -4,8 +4,8 @@ var express = require('express');
 var userController = require('../controllers/userController');
 var router = express.Router();
 
-//GET login page
-//router.get('/', userController.index);
+//GET redirect to login page uri
+router.get('/', userController.index);
 
 //GET request for signup page
 router.get('/user/create', userController.user_create_get);
