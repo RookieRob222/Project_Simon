@@ -1,8 +1,8 @@
-import mongoose = require('mongoose');
+var mongoose = require('mongoose');
  
 const userSchema = new mongoose.Schema(
   {
-    username: {
+    _id: {
 	type: String,
 	unique: true,
 	required: true,

@@ -1,36 +1,33 @@
+//Author: Sean Barrett
 var mongoose = require('mongoose');
 var Schema =mongoose.Schema;
 var User = require('./userModel');
+mongoose.connect('mongodb://localhost:27017/simonDB');
 
+async function createUser(username,password){
+    return await User.create({_id:'username',password:'password'});
+} 
 
-function createUser(username,password){
-import.login.js(username);
-import.login.js(password);
-userSchema.insert(username) as new userSchema.username;
-userSchema.insert(password) as new userSchema.password;
-}
-function getUser(username){
-    use simonDB.User;
-    User.find(username.current);
- 
+async function getUser(username){
+    return await User.findById(username);
 }
 
-function getAllUsers(){
-    use simonDB.User;
-    User.find(username).pretty;
+async function getAllUsers(){
+    return await User.find({});
 }
 
-function setScore(score,highscore){
-    use simonDB.User;
-    User.update($set : highscore=score);
+async function setScore(username,score){
+    return await User.findByIdAndUpdate(username,{$set:{highscore=score}});
 }
 
-function getScore(){
-    use simonDB.User;
-    User.find(curentuser:(highscore));
+async function getScore(username){
+    return await  User.findById(username,{_id:0,highscore:1,password:0});
 }
 
-function getAllScores(){
-    use simonDB.User;
-    User.find(username);
+async function getAllScores(){
+    return await  User.find({},{_id:1,highscore:1,password:0});
+}
+
+async function top5(){
+    return await User.find({},{_id:1,highscore:1,password:0}).sort({ highscore: 'asc' }).limit(5);
 }
