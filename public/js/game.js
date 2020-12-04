@@ -4,7 +4,6 @@
  * 20 Rounds
  * User must repeat pattern and reach final round to win
  * Speed increases by 1/10th of a second every 5 rounds.
- * User gets 5 seconds between each input before losing
  * 
  * CURRENT BUG: After first game it only accepts blue as the correct answer
  * WORK AROUND: Hid start button on game start and added reset button to reload page
@@ -13,7 +12,7 @@
 var listenersActive;
 var gameOver;
 
-async function gameLoop(){
+async function startGame(){
 	const lastRound = 20;
 	const colors = ["red","blue","green","yellow"];
 	const GREEN = document.getElementById('green');
@@ -21,7 +20,6 @@ async function gameLoop(){
 	const YELLOW = document.getElementById('yellow');
 	const BLUE = document.getElementById('blue');
 	const roundCounter = document.getElementById('roundCounter');
-	const endBtn = document.getElementById('end');
 	const startBtn = document.getElementById('start');
 	
 	var simonArray = [];
@@ -36,18 +34,23 @@ async function gameLoop(){
 	RED.addEventListener('click', () => {buttonHandler(RED, simonArray, iterator)}, false);
 	YELLOW.addEventListener('click', () => {buttonHandler(YELLOW, simonArray, iterator)}, false);
 	BLUE.addEventListener('click', () => {buttonHandler(BLUE, simonArray, iterator)}, false);
-
+	
+	//Hide start button
 	startBtn.style.display = "none";
 	
+	//Begin game loop
 	for(var round = 0; round <= lastRound; round++){
 		if (round == lastRound){
-			alert("Game Won!");
 			sendScore(score);
+			alert("Game Won!");
 		}
 		else if (gameOver == true){
-			sendScore(score);
-			//alert if new highscore
-			alert("You Lose" + "\n" + "Score: " + score + "\n" + "Sequence: " + simonArray);
+			if (sendScore(score)){
+				alert("New High Score!" + "\n" + "Score: " + score + "\n" + "Sequence: " + simonArray);
+			}
+			else {
+				alert("You Lose" + "\n" + "Score: " + score + "\n" + "Sequence: " + simonArray);
+			}
 			break;
 			}
 		else{
@@ -90,7 +93,12 @@ async function gameLoop(){
 	}
 }
 
-//Compares the button pressed to the current color in the simonArray sequence 
+//Compares the button pressed to the current color in the 
+//simonArray sequence if listenersActive is true. Turns Listeners
+//off on exit
+//@param1	Button Object - which color tile was pressed
+//@param2	Array - The simonArray sequence to be compared to
+//@param3	Int - Which step of the sequence to test
 function buttonHandler(button, simonArray, iterator){
 		if (listenersActive == true){
 			if (button.id != simonArray[iterator]){ 
@@ -101,6 +109,8 @@ function buttonHandler(button, simonArray, iterator){
 }
 
 //Temporarily changes color of button for specified length of time
+//@param1 Button Object - which color tile to flash 
+//@param2 Int - Duration of button flash
 async function FlashButton(button, speed){
 	button.style.backgroundColor='#eee'; //White
 	await new Promise(resolve => setTimeout(resolve, speed));
@@ -108,11 +118,14 @@ async function FlashButton(button, speed){
 	await new Promise(resolve => setTimeout(resolve, speed));
 }
 
-//Send Score Request function
 //Needs work
+//Send Score Request to server
+//@param Int - score that user just recieved
+//@return Boolean - True if score is new highscore 
 function sendScore(score){
 	const Url = 'http://localhost:8080/user/new-score';
 	$.post(Url,score, function (score, status){
 		console.log('${score} and status is ${status}');
 	});
+	return false; //Temporarily always returns false
 }
