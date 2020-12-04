@@ -13,7 +13,6 @@ body {
 .tile:hover {
     box-shadow: inset 0 0 0 5px white;
     box-sizing: border-box;
-    
 }
 .upper-right-tile {
     border-top-right-radius:100%;
