@@ -1,0 +1,38 @@
+doctype html
+html(lang="en")
+   head
+      meta(
+         charset="UTF-8"
+         name="viewport" 
+         content="width=device-width, initial-scale=1.0")
+      title="Simon Game"
+      link(
+         rel="stylesheet" href="/public/css/game.css")
+      script(
+         src="http://code.jquery.com/jquery-3.3.1.min.js") 
+      script(
+         src="/public/js/game.js")
+     
+   body 
+      h3 WELCOME #{user}
+      #gameFace
+         
+         button(
+            id="green" name="green" class="tile upper-left-tile")
+         button(
+            id="red" name="red" class="tile upper-right-tile")  
+         button(
+            id="yellow" name="yellow" class="tile lower-left-tile")
+         button(
+            id="blue" name="blue" class="tile lower-right-tile")
+      #Controls
+         button(
+            id="start" class="btn success" onclick='startGame()' ) Start
+         button(
+            id="reset" class="btn reset" onclick="window.location.reload()") Reset
+         div(
+            id="roundCounter") 0 
+      #highscores
+      block highscores
+
+
