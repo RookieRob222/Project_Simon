@@ -16,13 +16,16 @@ router.post('/user/create', userController.user_create_post);
 //GET request for login page
 router.get('/user/login', userController.user_login_get);
 
-//POST username and password
+//POST request username and password to sign in
 router.post('/user/login', userController.user_login_post);
+
+//GET request for game page
+router.get('/user/game', userController.user_game_get);
 
 //GET current high score
 router.get('/user/:username/high-score', userController.user_score_get);
 
-//POST new score
-router.post('/user/:username/new-score', userController.user_score_post);
+//POST new score /user/:username/new-score
+router.post('/user/new-score', userController.user_score_post);
 
 module.exports = router;

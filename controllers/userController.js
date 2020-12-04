@@ -1,6 +1,7 @@
 //Author: Bob Moore
 
-//var User = require('../models/userModel'); Not implemented yet
+//var user = require('../models/userModel'); Not implemented yet
+//var services = require('../services/services') Not Implemented yet
 var express = require('express');
 var app = express();
 var path = require('path');
@@ -26,15 +27,19 @@ exports.user_login_get = function(req, res){
 }
 
 exports.user_login_post = function(req, res){
-	res.send('NOT IMPLEMENTED: user login POST');
+	res.redirect('/user/game');
+}
+
+exports.user_game_get = function(req, res){
+	res.sendFile(path.join(__dirname, '..', 'views', 'game.html'));
 }
 
 exports.user_score_get = function(req, res){
-	res.send('NOT IMPLEMENTED: user create GET');
+	res.send('NOT IMPLEMENTED: user score GET');
 }
 
 exports.user_score_post = function(req, res){
-	res.send('NOT IMPLEMENTED: user create POST');
+	res.send('NOT IMPLEMENTED: user score POST');
 }
 
 
