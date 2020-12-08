@@ -63,7 +63,7 @@ async function startGame(){
 			}
 		
 			for(var flash = 0; flash <= round; flash++){
-				if (simonArray[flash] == "green"){
+				if(simonArray[flash] == "green"){
 					await FlashButton(GREEN, speed);
 				}
 				else if (simonArray[flash] == "red"){
@@ -112,8 +112,10 @@ function buttonHandler(button, simonArray, iterator){
 //@param1 Button Object - which color tile to flash 
 //@param2 Int - Duration of button flash
 async function FlashButton(button, speed){
+		
 	button.style.backgroundColor='#eee'; //White
 	await new Promise(resolve => setTimeout(resolve, speed));
+			
 	button.style.backgroundColor=button.id; //Original color
 	await new Promise(resolve => setTimeout(resolve, speed));
 }

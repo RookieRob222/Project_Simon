@@ -1,16 +1,25 @@
 body {
     background-color: black;
     text-align: center;
-    margin-top: 100px;
+    margin-top: 20px;
 }
 h3 {
     color:blue;
     
 }
+#gameFace {
+    position:relative;
+}
+.top {
+    position:absolute;
+}
+.bottom {
+    position:absolute;
+}
 .tile {
-    width: 200px;
-    height: 200px;
-    display: inline-block;
+    width: 150px;
+    height: 150px;
+    display: center;
     cursor: pointer;
     border-color: gray;
 }
@@ -26,7 +35,7 @@ h3 {
 }
 .upper-left-tile {
     border-top-left-radius:100%;
-    background-color: green;
+    background-color:green;
 }
 .lower-left-tile {
     border-bottom-left-radius:100%;
@@ -55,19 +64,27 @@ h3 {
   
 
   #roundCounter {
-    position: absolute;
+    position:flex;
     background: yellow;
     color: red;
     font-family: Arial;
-    font-size: 18px;
+    font-size: bold 18px;
     height: 40px;
     width: 60px;
-    margin-left: 325px;
-    margin-top: 15px;
+    margin-left: 50%;
+    margin-bottom:10px;
     text-align: center;
     line-height: 40px;
   }
+aside h1 {
+    color:white;
+    text-align:left;
+    margin-bottom: 5px;
 
+}
+#Congrats { 
+    color:yellowgreen;
+}
 
 
 
