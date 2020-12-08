@@ -125,9 +125,9 @@ async function FlashButton(button, speed){
 //@param Int - score that user just recieved
 //@return Boolean - True if score is new highscore 
 function sendScore(score){
-	const Url = 'http://localhost:8080/user/new-score';
-	$.post(Url,score, function (score, status){
-		console.log('${score} and status is ${status}');
+	const URL = 'http://localhost:8080/user/newScore';
+	$.post(URL,{score: score}, function (score, status){
+		console.log(score + ' and status is ' + status);
 	});
 	return false; //Temporarily always returns false
 }

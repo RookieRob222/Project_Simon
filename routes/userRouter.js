@@ -1,31 +1,51 @@
 //Author: Bob Moore
 
 var express = require('express');
-var userController = require('../controllers/userController');
 var router = express.Router();
+var path = require('path');
+var bodyParser = require('body-parser');
+router.use(bodyParser.json()); // support json encoded bodies
+router.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 //GET redirect to login page uri
-router.get('/', userController.index);
+router.get('/', function(req, res){
+	res.redirect('/user/login');
+});
 
 //GET request for signup page
-router.get('/user/create', userController.user_create_get);
+router.get('/user/create', function(req, res){
+	res.sendFile(path.join(__dirname, '..', 'views', 'signUp.html'));
+});
 
 //POST request to create new user
-router.post('/user/create', userController.user_create_post);
+router.post('/user/create', function(req, res){
+	res.send('NOT IMPLEMENTED: user create POST');
+});
 
 //GET request for login page
-router.get('/user/login', userController.user_login_get);
+router.get('/user/login', function(req, res){
+	res.sendFile(path.join(__dirname, '..', 'views', 'login.html'));
+});
 
 //POST request username and password to sign in
-router.post('/user/login', userController.user_login_post);
+router.post('/user/login', function(req, res){
+	res.redirect('/user/game');
+});
 
 //GET request for game page
-router.get('/user/game', userController.user_game_get);
+router.get('/user/game', function(req, res){
+	res.sendFile(path.join(__dirname, '..', 'views', 'game.html'));
+});
 
 //GET current high score
-router.get('/user/:username/high-score', userController.user_score_get);
+router.get('/user/:username/highScore', function(req, res){
+	res.send('NOT IMPLEMENTED: user score GET');
+});
 
 //POST new score /user/:username/new-score
-router.post('/user/new-score', userController.user_score_post);
+router.post('/user/newScore', function(req, res){
+	console.log(req.body);
+	res.send(`NOT IMPLEMENTED: user score POST`);
+});
 
 module.exports = router;
